@@ -27,31 +27,31 @@ class Star {
     let initialX = random(0, width);
     let initialY = random(0, height);
     let initialZ = random(0, zDepth);
-    let location = createVector(this.initialX, this.initialY, this.initialZ);
+    let location = createVector(initialX, initialY, initialZ);
 
     //other important variables
     let starSpeed = random(0.1, 1);
-    starSize = random(.5, 3);
+    let starSize = random(.5, 3);
     
     red = random(100, 230);
     green = random(100, 230);
     blue = random(100, 230);
-    starColor = color(red, green, blue);
+    let starColor = color(red, green, blue);
 
   }
 
   move() {
-    location.z -= starSpeed;
+    location(createVector(0,0,this.starSpeed));
   }
 
   show() {
-    fill(starColor);
+    fill(this.starColor);
 
-    starRadius = map(location.z, 0, 500, starSize, 0);
+    let starRadius = map(this.location.z, 0, 500, this.starSize, 0);
     strokeWeight(starRadius * 2);
-    stroke(starColor, 100);
+    stroke(this.starColor, 100);
     
-    rect(location.x, location.y, starRadius, starRadius);
+    rect(this.location.x, this.location.y, starRadius, starRadius);
 
   }
 
