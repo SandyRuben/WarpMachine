@@ -4,6 +4,9 @@ let shipSpeed = 1;
 let warpDriveSpeed = 10;
 let warpDriveState = false;
 
+function preLoad() {
+  warpPulse = loadSound('//assets/warpPulse.mp3');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -13,6 +16,8 @@ function setup() {
   for (let i = 0; i < numStars; i++) {
     stars.push(new Star());
   }
+
+
 }
 
 function draw() {
@@ -33,10 +38,9 @@ function draw() {
 
 function warpDrive() {
   shipSpeed = warpDriveSpeed;
-}
-
-function motorControl() {
-  
+  if (!warpPulse.isPlaying()) {
+    warpPulse.play();
+  }
 }
 
 function windowResized() {
